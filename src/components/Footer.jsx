@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const FooterContainer = styled.footer`
   background-color: #1a1a2e;
@@ -145,12 +146,12 @@ const SocialLinks = styled.div`
 `;
 
 const FooterBottom = styled.div`
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 2rem auto 0;
   padding: 1.5rem 2rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
 
@@ -216,34 +217,55 @@ const Footer = () => {
         <FooterSection>
           <FooterHeading>Quick Links</FooterHeading>
           <FooterLinks>
-            <FooterLink><a href="/upcoming-events">Upcoming Events</a></FooterLink>
-            <FooterLink><a href="/shane-sandesh">Shane Sandesh</a></FooterLink>
-            <FooterLink><a href="/join-shf">Join SHF</a></FooterLink>
-            <FooterLink><a href="/donate">Donate</a></FooterLink>
-            <FooterLink><a href="/about-forum">About the Forum</a></FooterLink>
-            <FooterLink><a href="/neo-democracy">Neo-democracy</a></FooterLink>
-            <FooterLink><a href="/founder">Founder</a></FooterLink>
-            <FooterLink><a href="/contact-us">Contact Us</a></FooterLink>
+            <FooterLink><Link to="/upcoming-events">Upcoming Events</Link></FooterLink>
+            <FooterLink><Link to="/shane-sandesh">Shane Sandesh</Link></FooterLink>
+            <FooterLink><Link to="/join-shf">Join SHF</Link></FooterLink>
+            <FooterLink><Link to="/donate">Donate</Link></FooterLink>
+            <FooterLink><Link to="/about-shf">About the Forum</Link></FooterLink>
+            <FooterLink><Link to="/neo-democracy">Neo-democracy</Link></FooterLink>
+            <FooterLink><Link to="/dr-awadhesh-kumar-singh">Founder</Link></FooterLink>
+            <FooterLink><Link to="/contact-us">Contact Us</Link></FooterLink>
           </FooterLinks>
         </FooterSection>
 
         <FooterSection>
-          <FooterHeading>Contact Us</FooterHeading>
+          <div>
+             <FooterHeading>Head Office</FooterHeading>
           <ContactInfo>
             <FaMapMarkerAlt />
             <ContactText>
-              123 Wisdom Avenue<br />
-              Knowledge City, IN 123456
+              Flat No. 503, Saral CGHS Limited, Plot- 15 Dwarka, Sector 10, New Delhi-110075
             </ContactText>
           </ContactInfo>
           <ContactInfo>
             <FaPhone />
-            <ContactText>+91 12345 67890</ContactText>
+            <ContactText>+91 8185099777</ContactText>
           </ContactInfo>
           <ContactInfo>
             <FaEnvelope />
-            <ContactText>info@shfexample.com</ContactText>
+            <ContactText>shanehindforum@gmail.com</ContactText>
           </ContactInfo> 
+          </div>
+
+          <div>
+             <FooterHeading>Deoria Office</FooterHeading>
+          <ContactInfo>
+            <FaMapMarkerAlt />
+            <ContactText>
+              Flat No. 503, Saral CGHS Limited, Plot- 15 Dwarka, Sector 10, New Delhi-110075
+            </ContactText>
+          </ContactInfo>
+          <ContactInfo>
+            <FaPhone />
+            <ContactText>+91 8185099777</ContactText>
+          </ContactInfo>
+          <ContactInfo>
+            <FaEnvelope />
+            <ContactText>shanehindforum@gmail.com</ContactText>
+          </ContactInfo> 
+
+          </div>
+         
         </FooterSection>
 
         <FooterSection>
@@ -274,13 +296,13 @@ const Footer = () => {
 
       <FooterBottom>
         <FooterNav>
-          <a href="/privacy-policy">Privacy Policy</a>
-          <a href="/terms-conditions">Terms & Conditions</a>
-          <a href="/disclaimer">Disclaimer</a>
-          <a href="/sitemap">Sitemap</a>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-conditions">Terms & Conditions</Link>
+          <Link to="/disclaimer">Disclaimer</Link>
+          <Link to="/sitemap">Sitemap</Link>
         </FooterNav>
         <Copyright>
-          &copy; {new Date().getFullYear()} SHF. All Rights Reserved.
+          &copy; {new Date().getFullYear()} SHF. All Rights Reserved.  designed and developed by <a href='https://srksoftwares.com' className='text-[#Df4AfD]' >SRK Softwares</a>
         </Copyright>
       </FooterBottom>
     </FooterContainer>

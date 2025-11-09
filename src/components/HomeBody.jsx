@@ -96,16 +96,16 @@ const HomeBody = () => {
           <FlowItem>कैबिनेट या मंत्रिमंडल</FlowItem>
         </ProcessFlow>
         <ContentText>
-          The two-party system is a political framework where two major political parties dominate voting in nearly all elections at every level of government. In countries like the United States, these are the Democratic and Republican parties.
+          The two-party system is a political framework where two major political parties dominate voting in nearly all elections at every level of government. 
         </ContentText>
         
         <SubTitle>Benefits to Society:</SubTitle>
         <BenefitsList>
           <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/> Provides clear choices for voters</BenefitItem>
-          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/>Promotes political stability and gradual change</BenefitItem>
-          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/>Simplifies the decision-making process for voters</BenefitItem>
-          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/>Encourages broad-based, centrist policies</BenefitItem>
-          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/>Creates accountability through clear opposition</BenefitItem>
+          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/> Promotes political stability and gradual change</BenefitItem>
+          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/> Simplifies the decision-making process for voters</BenefitItem>
+          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/> Encourages broad-based, centrist policies</BenefitItem>
+          <BenefitItem> <FaRegHandPointRight style={{marginRight:"5px", color: "#ff0000"}}/> Creates accountability through clear opposition</BenefitItem>
         </BenefitsList>
           <NoticeBoard ref={noticeBoardRef}>
           {twoParySystem.map((notice, index) => (
@@ -200,6 +200,9 @@ const NoticeBoardTitle = styled.h2`
   font-size:1.7rem;
   font-weight: 700;
   text-align:center;
+  @media (max-width: 600px){
+    font-size:1.5rem; 
+  }
 `;
 
 const NoticeBoard = styled.div`
@@ -227,6 +230,10 @@ const ContentTitle = styled.h1`
   font-weight: 700;
   font-size:3rem;
   text-align: center;
+
+  @media (max-width: 600px){
+    font-size: 2.5rem;
+  }
 `;
 
 const SubTitle = styled.h2`
@@ -261,6 +268,7 @@ const BenefitsList = styled.ul`
 const BenefitItem = styled.li`
   display: flex;
   align-items: center;
+  justi
   margin-bottom: 0.8rem;
   line-height: 1.5;
   color: #1500ffff;

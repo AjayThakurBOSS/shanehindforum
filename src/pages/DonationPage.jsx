@@ -11,6 +11,7 @@ const DonationPage = () => {
   const [donationType, setDonationType] = useState('oneTime');
   const [amount, setAmount] = useState('');
   const [customAmount, setCustomAmount] = useState('');
+  const [language, setLanguage] = useState('english');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -23,6 +24,181 @@ const DonationPage = () => {
     paymentMethod: 'upi',
     receiptRequired: true
   });
+
+  const content = {
+    english: {
+      heroTitle: "Invest in India's Democratic Future",
+      heroSubtitle: "Your donation fuels the Neo-Democracy movement to restore constitutional values",
+      
+      // Impact Section
+      sectionTitle: "Why Your Donation is Crucial for India's Future",
+      neoDemocracyAppeal: "We stand at a historic crossroads. The original vision of our Constitution - of true people's democracy, free from party supremacy - is under threat. Your support today will help restore the democratic framework envisioned by our founding fathers.",
+      
+      impact1Title: "Constitutional Renaissance",
+      impact1Text: "Your contribution funds research, education, and advocacy to restore the original constitutional vision that eliminates party dominance and establishes true people's sovereignty through the TPTP system.",
+      
+      impact2Title: "Grassroots Democratic Reform",
+      impact2Text: "Support our nationwide campaign to educate citizens about the Neo-Democracy model - replacing the current FPTP system with TPTP to ensure majority representation and end divisive politics.",
+      
+      impact3Title: "Legal & Policy Advocacy",
+      impact3Text: "Fund critical legal interventions and policy research to challenge the current multi-party system that has distorted our democracy and promote the two-party TPTP alternative.",
+      
+      impact4Title: "Youth & Citizen Empowerment",
+      impact4Text: "Enable us to conduct workshops, training programs, and create educational materials that empower the next generation with constitutional knowledge and democratic values.",
+      
+      urgencyTitle: "The Time for Action is Now",
+      urgencyText: "Every day of delay means continued erosion of democratic values. Your contribution today can help accelerate the transition to a true people's democracy based on original constitutional principles.",
+      
+      // Financial Transparency
+      transparencyTitle: "Complete Financial Transparency",
+      transparencyContent: "We believe in absolute accountability. Every rupee you donate is meticulously tracked and utilized for maximum impact in our mission to restore authentic democracy.",
+      
+      // Donation Form
+      formTitle: "Support the Democratic Renaissance",
+      oneTimeDonation: "One-Time Donation",
+      monthlySupport: "Monthly Support",
+      selectAmount: "Select Amount (INR)*",
+      otherAmount: "Other Amount",
+      personalInfo: "Personal Information*",
+      fullName: "Full Name*",
+      email: "Email Address*",
+      phone: "Phone Number*",
+      addressLabel: "Address for Tax Receipt (if applicable)",
+      streetAddress: "Street Address",
+      city: "City",
+      state: "State",
+      pincode: "Pincode",
+      panNumber: "PAN Number (for 80G receipt)",
+      receiptRequired: "I require a tax exemption receipt under Section 80G",
+      
+      // Payment Methods
+      paymentMethod: "Payment Method*",
+      upiPayment: "UPI Payment",
+      upiDesc: "Instant payment via any UPI app",
+      cardPayment: "Credit/Debit Card",
+      cardDesc: "Visa, Mastercard, Rupay, etc.",
+      netBanking: "Net Banking",
+      netBankingDesc: "Direct bank transfer",
+      bankTransfer: "Bank Transfer",
+      bankTransferDesc: "NEFT/RTGS/IMPS",
+      chequeDD: "Cheque/DD",
+      chequeDesc: "Payable in Delhi",
+      
+      // Bank Details
+      bankDetailsTitle: "Bank Account Details",
+      accountName: "Account Name",
+      bankName: "Bank Name",
+      accountNumber: "Account Number",
+      accountType: "Account Type",
+      ifscCode: "IFSC Code",
+      branch: "Branch",
+      bankInstructions: "After making the transfer, please email the transaction details to donations@shf.org along with your name and contact information for receipt purposes.",
+      
+      // Cheque Details
+      chequeTitle: "Cheque/DD Instructions",
+      chequeInstructions1: "Please make your cheque or demand draft payable to:",
+      chequePayable: "Shane Hind Forum for Constitutional Studies",
+      chequeInstructions2: "Mail your cheque to:",
+      chequeAddress: "Shane Hind Forum, 24, Constitution Avenue, New Delhi - 110001",
+      chequeInstructions3: "Please include your name, address, phone number, and email on a separate sheet for receipt purposes.",
+      
+      // Buttons
+      setupMonthly: "Setup Monthly Donation",
+      makeDonation: "Make Donation",
+      securePayment: "Your payment information is processed securely. We do not store your credit card details.",
+      
+      // Testimonials
+      donorTestimonial: "I donate because I believe in restoring the Constitution's original vision. This is not just charity - it's an investment in India's democratic soul.",
+      donorName: "- Dr. Amit Sharma, Constitutional Scholar"
+    },
+    hindi: {
+      heroTitle: "भारत के लोकतांत्रिक भविष्य में निवेश करें",
+      heroSubtitle: "आपका दान नव-लोकतंत्र आंदोलन को संवैधानिक मूल्यों को बहाल करने के लिए शक्ति प्रदान करता है",
+      
+      // Impact Section
+      sectionTitle: "भारत के भविष्य के लिए आपका दान क्यों महत्वपूर्ण है",
+      neoDemocracyAppeal: "हम एक ऐतिहासिक मोड़ पर खड़े हैं। हमारे संविधान का मूल दृष्टिकोण - वास्तविक जनता के लोकतंत्र का, पार्टी वर्चस्व से मुक्त - खतरे में है। आज आपका समर्थन हमारे संस्थापक पिताओं द्वारा परिकल्पित लोकतांत्रिक ढांचे को बहाल करने में मदद करेगा।",
+      
+      impact1Title: "संवैधानिक पुनर्जागरण",
+      impact1Text: "आपका योगदान शोध, शिक्षा और वकालत को निधि देता है ताकि मूल संवैधानिक दृष्टि को बहाल किया जा सके जो पार्टी प्रभुत्व को समाप्त करती है और टीपीटीपी प्रणाली के माध्यम से वास्तविक जनता की संप्रभुता स्थापित करती है।",
+      
+      impact2Title: "जमीनी लोकतांत्रिक सुधार",
+      impact2Text: "हमारे राष्ट्रव्यापी अभियान का समर्थन करें जो नागरिकों को नव-लोकतंत्र मॉडल के बारे में शिक्षित करता है - वर्तमान एफपीटीपी प्रणाली को टीपीटीपी के साथ बदलकर बहुमत प्रतिनिधित्व सुनिश्चित करना और विभाजनकारी राजनीति को समाप्त करना।",
+      
+      impact3Title: "कानूनी और नीति वकालत",
+      impact3Text: "महत्वपूर्ण कानूनी हस्तक्षेप और नीति अनुसंधान को निधि दें ताकि वर्तमान बहुदलीय प्रणाली को चुनौती दी जा सके जिसने हमारे लोकतंत्र को विकृत किया है और दो-दलीय टीपीटीपी विकल्प को बढ़ावा दिया जा सके।",
+      
+      impact4Title: "युवा और नागरिक सशक्तिकरण",
+      impact4Text: "हमें कार्यशालाएं, प्रशिक्षण कार्यक्रम आयोजित करने और शैक्षिक सामग्री बनाने में सक्षम बनाएं जो अगली पीढ़ी को संवैधानिक ज्ञान और लोकतांत्रिक मूल्यों से सशक्त बनाती है।",
+      
+      urgencyTitle: "कार्रवाई का समय अब है",
+      urgencyText: "देरी का हर दिन लोकतांत्रिक मूल्यों के निरंतर क्षरण को दर्शाता है। आज आपका योगदान मूल संवैधानिक सिद्धांतों पर आधारित वास्तविक जनता के लोकतंत्र में संक्रमण को तेज करने में मदद कर सकता है।",
+      
+      // Financial Transparency
+      transparencyTitle: "पूर्ण वित्तीय पारदर्शिता",
+      transparencyContent: "हम पूर्ण जवाबदेही में विश्वास करते हैं। आपके द्वारा दान किया गया हर रुपया वास्तविक लोकतंत्र को बहाल करने के हमारे मिशन में अधिकतम प्रभाव के लिए सावधानीपूर्वक ट्रैक और उपयोग किया जाता है।",
+      
+      // Donation Form
+      formTitle: "लोकतांत्रिक पुनर्जागरण का समर्थन करें",
+      oneTimeDonation: "एकमुश्त दान",
+      monthlySupport: "मासिक समर्थन",
+      selectAmount: "राशि चुनें (INR)*",
+      otherAmount: "अन्य राशि",
+      personalInfo: "व्यक्तिगत जानकारी*",
+      fullName: "पूरा नाम*",
+      email: "ईमेल पता*",
+      phone: "फोन नंबर*",
+      addressLabel: "टैक्स रसीद के लिए पता (यदि लागू हो)",
+      streetAddress: "सड़क का पता",
+      city: "शहर",
+      state: "राज्य",
+      pincode: "पिनकोड",
+      panNumber: "पैन नंबर (80G रसीद के लिए)",
+      receiptRequired: "मुझे धारा 80G के तहत कर छूट रसीद की आवश्यकता है",
+      
+      // Payment Methods
+      paymentMethod: "भुगतान विधि*",
+      upiPayment: "यूपीआई भुगतान",
+      upiDesc: "किसी भी यूपीआई ऐप के माध्यम से तत्काल भुगतान",
+      cardPayment: "क्रेडिट/डेबिट कार्ड",
+      cardDesc: "वीज़ा, मास्टरकार्ड, रुपे, आदि।",
+      netBanking: "नेट बैंकिंग",
+      netBankingDesc: "सीधा बैंक ट्रांसफर",
+      bankTransfer: "बैंक ट्रांसफर",
+      bankTransferDesc: "NEFT/RTGS/IMPS",
+      chequeDD: "चेक/डीडी",
+      chequeDesc: "दिल्ली में देय",
+      
+      // Bank Details
+      bankDetailsTitle: "बैंक खाता विवरण",
+      accountName: "खाता नाम",
+      bankName: "बैंक का नाम",
+      accountNumber: "खाता नंबर",
+      accountType: "खाता प्रकार",
+      ifscCode: "आईएफएससी कोड",
+      branch: "शाखा",
+      bankInstructions: "ट्रांसफर करने के बाद, कृपया रसीद उद्देश्यों के लिए अपना नाम और संपर्क जानकारी के साथ लेनदेन विवरण donations@shf.org पर ईमेल करें।",
+      
+      // Cheque Details
+      chequeTitle: "चेक/डीडी निर्देश",
+      chequeInstructions1: "कृपया अपना चेक या डिमांड ड्राफ्ट देय बनाएं:",
+      chequePayable: "शेन हिंद फोरम फॉर कॉन्स्टिट्यूशनल स्टडीज",
+      chequeInstructions2: "अपना चेक इस पते पर मेल करें:",
+      chequeAddress: "शेन हिंद फोरम, 24, कॉन्स्टिट्यूशन एवेन्यू, नई दिल्ली - 110001",
+      chequeInstructions3: "कृपया रसीद उद्देश्यों के लिए एक अलग शीट पर अपना नाम, पता, फोन नंबर और ईमेल शामिल करें।",
+      
+      // Buttons
+      setupMonthly: "मासिक दान सेटअप करें",
+      makeDonation: "दान करें",
+      securePayment: "आपकी भुगतान जानकारी सुरक्षित रूप से संसाधित की जाती है। हम आपके क्रेडिट कार्ड विवरण संग्रहीत नहीं करते हैं।",
+      
+      // Testimonials
+      donorTestimonial: "मैं दान इसलिए देता हूं क्योंकि मैं संविधान के मूल दृष्टिकोण को बहाल करने में विश्वास करता हूं। यह सिर्फ दान नहीं है - यह भारत की लोकतांत्रिक आत्मा में निवेश है।",
+      donorName: "- डॉ. अमित शर्मा, संवैधानिक विद्वान"
+    }
+  };
+
+  const currentContent = content[language];
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -47,404 +223,540 @@ const DonationPage = () => {
 
   return (
     <HomePage>
-    <PageContainer>
-      <HeroSection>
-        <HeroOverlay />
-        <HeroContent>
-          <HeroTitle>Support Constitutional Renaissance</HeroTitle>
-          <HeroSubtitle>Your donation fuels the movement for authentic democracy</HeroSubtitle>
-        </HeroContent>
-      </HeroSection>
+      <LanguageSwitcher>
+        <LanguageButton 
+          active={language === 'hindi'} 
+          onClick={() => setLanguage('hindi')}
+        >
+          हिंदी
+        </LanguageButton>
+        <LanguageButton 
+          active={language === 'english'} 
+          onClick={() => setLanguage('english')}
+        >
+          English
+        </LanguageButton>
+      </LanguageSwitcher>
 
-      <ContentContainer>
-        <DonationImpactSection>
-          <SectionTitle>Why Your Donation Matters</SectionTitle>
-          
-          <ImpactGrid>
-            <ImpactCard>
-              <ImpactIcon>📚</ImpactIcon>
-              <ImpactContent>
-                <ImpactCardTitle>Constitutional Education</ImpactCardTitle>
-                <ImpactCardText>
-                  Your support helps us conduct workshops, seminars, and create educational materials that empower
-                  citizens with knowledge about their constitutional rights and duties.
-                </ImpactCardText>
-              </ImpactContent>
-            </ImpactCard>
+      <PageContainer>
+        <HeroSection>
+          <HeroOverlay />
+          <HeroContent>
+            <HeroTitle>{currentContent.heroTitle}</HeroTitle>
+            <HeroSubtitle>{currentContent.heroSubtitle}</HeroSubtitle>
+          </HeroContent>
+        </HeroSection>
 
-            <ImpactCard>
-              <ImpactIcon>⚖️</ImpactIcon>
-              <ImpactContent>
-                <ImpactCardTitle>Legal Advocacy</ImpactCardTitle>
-                <ImpactCardText>
-                  Funds enable us to support important public interest litigations and legal research that uphold
-                  constitutional values and protect civil liberties.
-                </ImpactCardText>
-              </ImpactContent>
-            </ImpactCard>
-
-            <ImpactCard>
-              <ImpactIcon>🌐</ImpactIcon>
-              <ImpactContent>
-                <ImpactCardTitle>Grassroots Outreach</ImpactCardTitle>
-                <ImpactCardText>
-                  Donations help us establish local chapters, conduct community programs, and reach marginalized
-                  communities with democratic education.
-                </ImpactCardText>
-              </ImpactContent>
-            </ImpactCard>
-          </ImpactGrid>
-
-          <FinancialTransparency>
-            <TransparencyTitle>Financial Transparency</TransparencyTitle>
-            <TransparencyContent>
-              <p>
-                We are committed to complete transparency in how we use your donations. Here's how we allocated funds last year:
-              </p>
-              <TransparencyChart>
-                <ChartItem width="60%">Programs & Initiatives (60%)</ChartItem>
-                <ChartItem width="25%">Operational Costs (25%)</ChartItem>
-                <ChartItem width="10%">Fundraising (10%)</ChartItem>
-                <ChartItem width="5%">Reserve Fund (5%)</ChartItem>
-              </TransparencyChart>
-              <p>
-                All donations to Shane Hind Forum are eligible for tax exemption under Section 80G of the Income Tax Act.
-                We will provide you with a receipt for your donation.
-              </p>
-            </TransparencyContent>
-          </FinancialTransparency>
-        </DonationImpactSection>
-
-        <DonationFormContainer>
-          <DonationForm onSubmit={handleSubmit}>
-            <FormTitle>Make a Donation</FormTitle>
+        <ContentContainer>
+          <DonationImpactSection>
+            <SectionTitle>{currentContent.sectionTitle}</SectionTitle>
             
-            <DonationTypeToggle>
-              <TypeButton 
-                active={donationType === 'oneTime'} 
-                onClick={() => setDonationType('oneTime')}
-                type="button"
-              >
-                One-Time Donation
-              </TypeButton>
-              <TypeButton 
-                active={donationType === 'monthly'} 
-                onClick={() => setDonationType('monthly')}
-                type="button"
-              >
-                Monthly Support
-              </TypeButton>
-            </DonationTypeToggle>
+            <UrgencySection>
+              <UrgencyTitle>{currentContent.urgencyTitle}</UrgencyTitle>
+              <UrgencyText>{currentContent.urgencyText}</UrgencyText>
+            </UrgencySection>
 
-            <FormGroup>
-              <FormLabel>Select Amount (INR)*</FormLabel>
-              <AmountOptions>
-                {presetAmounts.map(amt => (
-                  <AmountButton 
-                    key={amt}
-                    type="button"
-                    active={amount === amt.toString()}
-                    onClick={() => {
-                      setAmount(amt.toString());
-                      setCustomAmount('');
-                    }}
-                  >
-                    ₹{amt.toLocaleString('en-IN')}
-                  </AmountButton>
-                ))}
-                <AmountButton 
-                  type="button"
-                  active={amount === 'other'}
-                  onClick={() => setAmount('other')}
-                >
-                  Other Amount
-                </AmountButton>
-              </AmountOptions>
+            <NeoDemocracyAppeal>
+              <AppealText>{currentContent.neoDemocracyAppeal}</AppealText>
+            </NeoDemocracyAppeal>
+            
+            <ImpactGrid>
+              <ImpactCard>
+                <ImpactIcon>📜</ImpactIcon>
+                <ImpactContent>
+                  <ImpactCardTitle>{currentContent.impact1Title}</ImpactCardTitle>
+                  <ImpactCardText>
+                    {currentContent.impact1Text}
+                  </ImpactCardText>
+                </ImpactContent>
+              </ImpactCard>
+
+              <ImpactCard>
+                <ImpactIcon>🌱</ImpactIcon>
+                <ImpactContent>
+                  <ImpactCardTitle>{currentContent.impact2Title}</ImpactCardTitle>
+                  <ImpactCardText>
+                    {currentContent.impact2Text}
+                  </ImpactCardText>
+                </ImpactContent>
+              </ImpactCard>
+
+              <ImpactCard>
+                <ImpactIcon>⚖️</ImpactIcon>
+                <ImpactContent>
+                  <ImpactCardTitle>{currentContent.impact3Title}</ImpactCardTitle>
+                  <ImpactCardText>
+                    {currentContent.impact3Text}
+                  </ImpactCardText>
+                </ImpactContent>
+              </ImpactCard>
+
+              <ImpactCard>
+                <ImpactIcon>👥</ImpactIcon>
+                <ImpactContent>
+                  <ImpactCardTitle>{currentContent.impact4Title}</ImpactCardTitle>
+                  <ImpactCardText>
+                    {currentContent.impact4Text}
+                  </ImpactCardText>
+                </ImpactContent>
+              </ImpactCard>
+            </ImpactGrid>
+
+            <DonorTestimonial>
+              <TestimonialText>"{currentContent.donorTestimonial}"</TestimonialText>
+              <TestimonialAuthor>{currentContent.donorName}</TestimonialAuthor>
+            </DonorTestimonial>
+
+            <FinancialTransparency>
+              <TransparencyTitle>{currentContent.transparencyTitle}</TransparencyTitle>
+              <TransparencyContent>
+                <p>
+                  {currentContent.transparencyContent}
+                </p>
+                <TransparencyChart>
+                  <ChartItem width="65%">{language === 'hindi' ? 'कार्यक्रम और पहल (65%)' : 'Programs & Initiatives (65%)'}</ChartItem>
+                  <ChartItem width="20%">{language === 'hindi' ? 'परिचालन लागत (20%)' : 'Operational Costs (20%)'}</ChartItem>
+                  <ChartItem width="10%">{language === 'hindi' ? 'फंडरेजिंग (10%)' : 'Fundraising (10%)'}</ChartItem>
+                  <ChartItem width="5%">{language === 'hindi' ? 'रिजर्व फंड (5%)' : 'Reserve Fund (5%)'}</ChartItem>
+                </TransparencyChart>
+                <p>
+                  {language === 'hindi' 
+                    ? 'शेन हिंद फोरम को सभी दान आयकर अधिनियम की धारा 80G के तहत कर छूट के लिए पात्र हैं। हम आपको आपके दान की रसीद प्रदान करेंगे।'
+                    : 'All donations to Shane Hind Forum are eligible for tax exemption under Section 80G of the Income Tax Act. We will provide you with a receipt for your donation.'
+                  }
+                </p>
+              </TransparencyContent>
+            </FinancialTransparency>
+          </DonationImpactSection>
+
+          <DonationFormContainer>
+            <DonationForm onSubmit={handleSubmit}>
+              <FormTitle>{currentContent.formTitle}</FormTitle>
               
-              {amount === 'other' && (
-                <CustomAmountInput
-                  type="number"
-                  placeholder="Enter custom amount"
-                  value={customAmount}
-                  onChange={(e) => setCustomAmount(e.target.value)}
-                  min="100"
-                  required
-                />
-              )}
-            </FormGroup>
+              <DonationTypeToggle>
+                <TypeButton 
+                  active={donationType === 'oneTime'} 
+                  onClick={() => setDonationType('oneTime')}
+                  type="button"
+                >
+                  {currentContent.oneTimeDonation}
+                </TypeButton>
+                <TypeButton 
+                  active={donationType === 'monthly'} 
+                  onClick={() => setDonationType('monthly')}
+                  type="button"
+                >
+                  {currentContent.monthlySupport}
+                </TypeButton>
+              </DonationTypeToggle>
 
-            <FormGroup>
-              <FormLabel>Personal Information*</FormLabel>
-              <FormInput 
-                type="text" 
-                name="fullName" 
-                placeholder="Full Name" 
-                value={formData.fullName} 
-                onChange={handleInputChange} 
-                required 
-              />
-            </FormGroup>
-
-            <FormRow>
               <FormGroup>
+                <FormLabel>{currentContent.selectAmount}</FormLabel>
+                <AmountOptions>
+                  {presetAmounts.map(amt => (
+                    <AmountButton 
+                      key={amt}
+                      type="button"
+                      active={amount === amt.toString()}
+                      onClick={() => {
+                        setAmount(amt.toString());
+                        setCustomAmount('');
+                      }}
+                    >
+                      ₹{amt.toLocaleString('en-IN')}
+                    </AmountButton>
+                  ))}
+                  <AmountButton 
+                    type="button"
+                    active={amount === 'other'}
+                    onClick={() => setAmount('other')}
+                  >
+                    {currentContent.otherAmount}
+                  </AmountButton>
+                </AmountOptions>
+                
+                {amount === 'other' && (
+                  <CustomAmountInput
+                    type="number"
+                    placeholder={language === 'hindi' ? "अन्य राशि दर्ज करें" : "Enter custom amount"}
+                    value={customAmount}
+                    onChange={(e) => setCustomAmount(e.target.value)}
+                    min="100"
+                    required
+                  />
+                )}
+              </FormGroup>
+
+              <FormGroup>
+                <FormLabel>{currentContent.personalInfo}</FormLabel>
                 <FormInput 
-                  type="email" 
-                  name="email" 
-                  placeholder="Email Address" 
-                  value={formData.email} 
+                  type="text" 
+                  name="fullName" 
+                  placeholder={currentContent.fullName} 
+                  value={formData.fullName} 
                   onChange={handleInputChange} 
                   required 
                 />
               </FormGroup>
-              <FormGroup>
-                <FormInput 
-                  type="tel" 
-                  name="phone" 
-                  placeholder="Phone Number" 
-                  value={formData.phone} 
-                  onChange={handleInputChange} 
-                  required 
-                />
-              </FormGroup>
-            </FormRow>
 
-            <FormGroup>
-              <FormLabel>Address for Tax Receipt (if applicable)</FormLabel>
-              <FormInput 
-                type="text" 
-                name="address" 
-                placeholder="Street Address" 
-                value={formData.address} 
-                onChange={handleInputChange} 
-              />
-            </FormGroup>
-
-            <FormRow>
-              <FormGroup>
-                <FormInput 
-                  type="text" 
-                  name="city" 
-                  placeholder="City" 
-                  value={formData.city} 
-                  onChange={handleInputChange} 
-                />
-              </FormGroup>
-              <FormGroup>
-                <FormInput 
-                  type="text" 
-                  name="state" 
-                  placeholder="State" 
-                  value={formData.state} 
-                  onChange={handleInputChange} 
-                />
-              </FormGroup>
-              <FormGroup>
-                <FormInput 
-                  type="text" 
-                  name="pincode" 
-                  placeholder="Pincode" 
-                  value={formData.pincode} 
-                  onChange={handleInputChange} 
-                />
-              </FormGroup>
-            </FormRow>
-
-            <FormGroup>
-              <FormLabel>PAN Number (for 80G receipt)</FormLabel>
-              <FormInput 
-                type="text" 
-                name="panNumber" 
-                placeholder="PAN Number" 
-                value={formData.panNumber} 
-                onChange={handleInputChange} 
-                pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
-                title="Please enter a valid PAN number (e.g., AAAAA9999A)"
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <CheckboxLabel>
-                <input 
-                  type="checkbox" 
-                  name="receiptRequired" 
-                  checked={formData.receiptRequired} 
-                  onChange={handleInputChange} 
-                />
-                I require a tax exemption receipt under Section 80G
-              </CheckboxLabel>
-            </FormGroup>
-
-            <PaymentSection>
-              <PaymentTitle>Payment Method*</PaymentTitle>
-              <PaymentOptions>
-                <PaymentOption>
-                  <input 
-                    type="radio" 
-                    id="upi" 
-                    name="paymentMethod" 
-                    value="upi" 
-                    checked={formData.paymentMethod === 'upi'} 
+              <FormRow>
+                <FormGroup>
+                  <FormInput 
+                    type="email" 
+                    name="email" 
+                    placeholder={currentContent.email} 
+                    value={formData.email} 
                     onChange={handleInputChange} 
                     required 
                   />
-                  <PaymentLabel htmlFor="upi">
-                    <PaymentIcon>💳</PaymentIcon>
-                    <div>
-                      <PaymentMethodName>UPI Payment</PaymentMethodName>
-                      <PaymentMethodDesc>Instant payment via any UPI app</PaymentMethodDesc>
-                    </div>
-                  </PaymentLabel>
-                </PaymentOption>
+                </FormGroup>
+                <FormGroup>
+                  <FormInput 
+                    type="tel" 
+                    name="phone" 
+                    placeholder={currentContent.phone} 
+                    value={formData.phone} 
+                    onChange={handleInputChange} 
+                    required 
+                  />
+                </FormGroup>
+              </FormRow>
 
-                <PaymentOption>
-                  <input 
-                    type="radio" 
-                    id="card" 
-                    name="paymentMethod" 
-                    value="card" 
-                    checked={formData.paymentMethod === 'card'} 
+              <FormGroup>
+                <FormLabel>{currentContent.addressLabel}</FormLabel>
+                <FormInput 
+                  type="text" 
+                  name="address" 
+                  placeholder={currentContent.streetAddress} 
+                  value={formData.address} 
+                  onChange={handleInputChange} 
+                />
+              </FormGroup>
+
+              <FormRow>
+                <FormGroup>
+                  <FormInput 
+                    type="text" 
+                    name="city" 
+                    placeholder={currentContent.city} 
+                    value={formData.city} 
                     onChange={handleInputChange} 
                   />
-                  <PaymentLabel htmlFor="card">
-                    <PaymentIcon>🏦</PaymentIcon>
-                    <div>
-                      <PaymentMethodName>Credit/Debit Card</PaymentMethodName>
-                      <PaymentMethodDesc>Visa, Mastercard, Rupay, etc.</PaymentMethodDesc>
-                    </div>
-                  </PaymentLabel>
-                </PaymentOption>
-
-                <PaymentOption>
-                  <input 
-                    type="radio" 
-                    id="netbanking" 
-                    name="paymentMethod" 
-                    value="netbanking" 
-                    checked={formData.paymentMethod === 'netbanking'} 
+                </FormGroup>
+                <FormGroup>
+                  <FormInput 
+                    type="text" 
+                    name="state" 
+                    placeholder={currentContent.state} 
+                    value={formData.state} 
                     onChange={handleInputChange} 
                   />
-                  <PaymentLabel htmlFor="netbanking">
-                    <PaymentIcon>📱</PaymentIcon>
-                    <div>
-                      <PaymentMethodName>Net Banking</PaymentMethodName>
-                      <PaymentMethodDesc>Direct bank transfer</PaymentMethodDesc>
-                    </div>
-                  </PaymentLabel>
-                </PaymentOption>
-
-                <PaymentOption>
-                  <input 
-                    type="radio" 
-                    id="bankTransfer" 
-                    name="paymentMethod" 
-                    value="bankTransfer" 
-                    checked={formData.paymentMethod === 'bankTransfer'} 
+                </FormGroup>
+                <FormGroup>
+                  <FormInput 
+                    type="text" 
+                    name="pincode" 
+                    placeholder={currentContent.pincode} 
+                    value={formData.pincode} 
                     onChange={handleInputChange} 
                   />
-                  <PaymentLabel htmlFor="bankTransfer">
-                    <PaymentIcon>🏛️</PaymentIcon>
-                    <div>
-                      <PaymentMethodName>Bank Transfer</PaymentMethodName>
-                      <PaymentMethodDesc>NEFT/RTGS/IMPS</PaymentMethodDesc>
-                    </div>
-                  </PaymentLabel>
-                </PaymentOption>
+                </FormGroup>
+              </FormRow>
 
-                <PaymentOption>
+              <FormGroup>
+                <FormLabel>{currentContent.panNumber}</FormLabel>
+                <FormInput 
+                  type="text" 
+                  name="panNumber" 
+                  placeholder={language === 'hindi' ? "पैन नंबर" : "PAN Number"} 
+                  value={formData.panNumber} 
+                  onChange={handleInputChange} 
+                  pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                  title="Please enter a valid PAN number (e.g., AAAAA9999A)"
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <CheckboxLabel>
                   <input 
-                    type="radio" 
-                    id="cheque" 
-                    name="paymentMethod" 
-                    value="cheque" 
-                    checked={formData.paymentMethod === 'cheque'} 
+                    type="checkbox" 
+                    name="receiptRequired" 
+                    checked={formData.receiptRequired} 
                     onChange={handleInputChange} 
                   />
-                  <PaymentLabel htmlFor="cheque">
-                    <PaymentIcon>✉️</PaymentIcon>
-                    <div>
-                      <PaymentMethodName>Cheque/DD</PaymentMethodName>
-                      <PaymentMethodDesc>Payable in Delhi</PaymentMethodDesc>
-                    </div>
-                  </PaymentLabel>
-                </PaymentOption>
-              </PaymentOptions>
-            </PaymentSection>
+                  {currentContent.receiptRequired}
+                </CheckboxLabel>
+              </FormGroup>
 
-            {formData.paymentMethod === 'bankTransfer' && (
-              <BankDetails>
-                <BankDetailsTitle>Bank Account Details</BankDetailsTitle>
-                <BankDetailsTable>
-                  <tbody>
-                    <tr>
-                      <td>Account Name</td>
-                      <td>Shane Hind Forum for Constitutional Studies</td>
-                    </tr>
-                    <tr>
-                      <td>Bank Name</td>
-                      <td>State Bank of India</td>
-                    </tr>
-                    <tr>
-                      <td>Account Number</td>
-                      <td>123456789012</td>
-                    </tr>
-                    <tr>
-                      <td>Account Type</td>
-                      <td>Current Account</td>
-                    </tr>
-                    <tr>
-                      <td>IFSC Code</td>
-                      <td>SBIN0001234</td>
-                    </tr>
-                    <tr>
-                      <td>Branch</td>
-                      <td>Connaught Place, New Delhi</td>
-                    </tr>
-                  </tbody>
-                </BankDetailsTable>
-                <BankInstructions>
-                  After making the transfer, please email the transaction details to donations@shf.org
-                  along with your name and contact information for receipt purposes.
-                </BankInstructions>
-              </BankDetails>
-            )}
+              <PaymentSection>
+                <PaymentTitle>{currentContent.paymentMethod}</PaymentTitle>
+                <PaymentOptions>
+                  <PaymentOption>
+                    <input 
+                      type="radio" 
+                      id="upi" 
+                      name="paymentMethod" 
+                      value="upi" 
+                      checked={formData.paymentMethod === 'upi'} 
+                      onChange={handleInputChange} 
+                      required 
+                    />
+                    <PaymentLabel htmlFor="upi">
+                      <PaymentIcon>💳</PaymentIcon>
+                      <div>
+                        <PaymentMethodName>{currentContent.upiPayment}</PaymentMethodName>
+                        <PaymentMethodDesc>{currentContent.upiDesc}</PaymentMethodDesc>
+                      </div>
+                    </PaymentLabel>
+                  </PaymentOption>
 
-            {formData.paymentMethod === 'cheque' && (
-              <ChequeDetails>
-                <ChequeDetailsTitle>Cheque/DD Instructions</ChequeDetailsTitle>
-                <ChequeInstructions>
-                  <p>
-                    Please make your cheque or demand draft payable to:<br />
-                    <strong>"Shane Hind Forum for Constitutional Studies"</strong>
-                  </p>
-                  <p>
-                    Mail your cheque to:<br />
-                    Shane Hind Forum,<br />
-                    24, Constitution Avenue,<br />
-                    New Delhi - 110001
-                  </p>
-                  <p>
-                    Please include your name, address, phone number, and email on a separate sheet
-                    for receipt purposes.
-                  </p>
-                </ChequeInstructions>
-              </ChequeDetails>
-            )}
+                  <PaymentOption>
+                    <input 
+                      type="radio" 
+                      id="card" 
+                      name="paymentMethod" 
+                      value="card" 
+                      checked={formData.paymentMethod === 'card'} 
+                      onChange={handleInputChange} 
+                    />
+                    <PaymentLabel htmlFor="card">
+                      <PaymentIcon>🏦</PaymentIcon>
+                      <div>
+                        <PaymentMethodName>{currentContent.cardPayment}</PaymentMethodName>
+                        <PaymentMethodDesc>{currentContent.cardDesc}</PaymentMethodDesc>
+                      </div>
+                    </PaymentLabel>
+                  </PaymentOption>
 
-            <SubmitButton type="submit">
-              {donationType === 'monthly' ? 'Setup Monthly Donation' : 'Make Donation'}
-            </SubmitButton>
+                  <PaymentOption>
+                    <input 
+                      type="radio" 
+                      id="netbanking" 
+                      name="paymentMethod" 
+                      value="netbanking" 
+                      checked={formData.paymentMethod === 'netbanking'} 
+                      onChange={handleInputChange} 
+                    />
+                    <PaymentLabel htmlFor="netbanking">
+                      <PaymentIcon>📱</PaymentIcon>
+                      <div>
+                        <PaymentMethodName>{currentContent.netBanking}</PaymentMethodName>
+                        <PaymentMethodDesc>{currentContent.netBankingDesc}</PaymentMethodDesc>
+                      </div>
+                    </PaymentLabel>
+                  </PaymentOption>
 
-            <SecurePaymentNote>
-              <LockIcon>🔒</LockIcon> Your payment information is processed securely. 
-              We do not store your credit card details.
-            </SecurePaymentNote>
-          </DonationForm>
-        </DonationFormContainer>
-      </ContentContainer>
-    </PageContainer>
+                  <PaymentOption>
+                    <input 
+                      type="radio" 
+                      id="bankTransfer" 
+                      name="paymentMethod" 
+                      value="bankTransfer" 
+                      checked={formData.paymentMethod === 'bankTransfer'} 
+                      onChange={handleInputChange} 
+                    />
+                    <PaymentLabel htmlFor="bankTransfer">
+                      <PaymentIcon>🏛️</PaymentIcon>
+                      <div>
+                        <PaymentMethodName>{currentContent.bankTransfer}</PaymentMethodName>
+                        <PaymentMethodDesc>{currentContent.bankTransferDesc}</PaymentMethodDesc>
+                      </div>
+                    </PaymentLabel>
+                  </PaymentOption>
+
+                  <PaymentOption>
+                    <input 
+                      type="radio" 
+                      id="cheque" 
+                      name="paymentMethod" 
+                      value="cheque" 
+                      checked={formData.paymentMethod === 'cheque'} 
+                      onChange={handleInputChange} 
+                    />
+                    <PaymentLabel htmlFor="cheque">
+                      <PaymentIcon>✉️</PaymentIcon>
+                      <div>
+                        <PaymentMethodName>{currentContent.chequeDD}</PaymentMethodName>
+                        <PaymentMethodDesc>{currentContent.chequeDesc}</PaymentMethodDesc>
+                      </div>
+                    </PaymentLabel>
+                  </PaymentOption>
+                </PaymentOptions>
+              </PaymentSection>
+
+              {formData.paymentMethod === 'bankTransfer' && (
+                <BankDetails>
+                  <BankDetailsTitle>{currentContent.bankDetailsTitle}</BankDetailsTitle>
+                  <BankDetailsTable>
+                    <tbody>
+                      <tr>
+                        <td>{currentContent.accountName}</td>
+                        <td>Shane Hind Forum for Constitutional Studies</td>
+                      </tr>
+                      <tr>
+                        <td>{currentContent.bankName}</td>
+                        <td>State Bank of India</td>
+                      </tr>
+                      <tr>
+                        <td>{currentContent.accountNumber}</td>
+                        <td>123456789012</td>
+                      </tr>
+                      <tr>
+                        <td>{currentContent.accountType}</td>
+                        <td>Current Account</td>
+                      </tr>
+                      <tr>
+                        <td>{currentContent.ifscCode}</td>
+                        <td>SBIN0001234</td>
+                      </tr>
+                      <tr>
+                        <td>{currentContent.branch}</td>
+                        <td>Connaught Place, New Delhi</td>
+                      </tr>
+                    </tbody>
+                  </BankDetailsTable>
+                  <BankInstructions>
+                    {currentContent.bankInstructions}
+                  </BankInstructions>
+                </BankDetails>
+              )}
+
+              {formData.paymentMethod === 'cheque' && (
+                <ChequeDetails>
+                  <ChequeDetailsTitle>{currentContent.chequeTitle}</ChequeDetailsTitle>
+                  <ChequeInstructions>
+                    <p>
+                      {currentContent.chequeInstructions1}<br />
+                      <strong>"{currentContent.chequePayable}"</strong>
+                    </p>
+                    <p>
+                      {currentContent.chequeInstructions2}<br />
+                      {currentContent.chequeAddress}
+                    </p>
+                    <p>
+                      {currentContent.chequeInstructions3}
+                    </p>
+                  </ChequeInstructions>
+                </ChequeDetails>
+              )}
+
+              <SubmitButton type="submit">
+                {donationType === 'monthly' ? currentContent.setupMonthly : currentContent.makeDonation}
+              </SubmitButton>
+
+              <SecurePaymentNote>
+                <LockIcon>🔒</LockIcon> {currentContent.securePayment}
+              </SecurePaymentNote>
+            </DonationForm>
+          </DonationFormContainer>
+        </ContentContainer>
+      </PageContainer>
     </HomePage>
   );
 };
+
+// New Styled Components
+const LanguageSwitcher = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  position: absolute;
+  top:25%;
+  right: 2rem;
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 1rem auto;
+  }
+`;
+
+const LanguageButton = styled.button`
+  padding: 0.5rem 1rem;
+  border: 2px solid #4a6fa5;
+  background-color: ${props => props.active ? '#4a6fa5' : 'white'};
+  color: ${props => props.active ? 'white' : '#4a6fa5'};
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #4a6fa5;
+    color: white;
+  }
+`;
+
+const UrgencySection = styled.div`
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+`;
+
+const UrgencyTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+`;
+
+const UrgencyText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+`;
+
+const NeoDemocracyAppeal = styled.div`
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+`;
+
+const AppealText = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-weight: 500;
+`;
+
+const DonorTestimonial = styled.div`
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  border-left: 4px solid #4299e1;
+`;
+
+const TestimonialText = styled.p`
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+
+  &:before {
+    content: '"';
+    font-size: 3rem;
+    line-height: 0;
+    color: #4299e1;
+    opacity: 0.3;
+    vertical-align: -1.5rem;
+  }
+`;
+
+const TestimonialAuthor = styled.div`
+  font-weight: 600;
+  color: #2b6cb0;
+`;
 
 // Reuse styled components from JoinPage where applicable
 const PageContainer = styled.div`
@@ -637,8 +949,8 @@ const TransparencyChart = styled.div`
 
 const ChartItem = styled.div`
   background: ${props => 
-    props.width === '60%' ? '#4299e1' :
-    props.width === '25%' ? '#3182ce' :
+    props.width === '65%' ? '#4299e1' :
+    props.width === '20%' ? '#3182ce' :
     props.width === '10%' ? '#2b6cb0' : '#1a365d'};
   width: ${props => props.width};
   display: flex;

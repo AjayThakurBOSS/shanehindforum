@@ -5,7 +5,7 @@ const WhyWeAreUniqueDocument = () => {
   return (
     <DocumentContainer>
       <MainHeader>
-        <Title> हम अद्वितीय क्यों हैं</Title>
+        <Title> हम अद्वितीय क्यों हैं ??</Title>
       </MainHeader>
 
       <Section>
@@ -523,6 +523,10 @@ const Title = styled.h1`
   color: #ff6600;
   margin: 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 600px){
+    font-size: 2.2rem;
+  }
 `;
 
 const Section = styled.section`

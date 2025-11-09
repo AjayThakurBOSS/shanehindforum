@@ -406,6 +406,9 @@ padding-top: 0;
 padding-bottom:0;
   position: relative; 
   height: ${({ navbarHeight }) => navbarHeight}px; 
+  @media (max-width: 700px){
+    margin-bottom: 53px;
+  }
 `;
 
 const NavbarContainer = styled.nav`

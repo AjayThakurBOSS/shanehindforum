@@ -20,7 +20,7 @@ const ContactContainer = styled.div`
 
 const HeroBanner = styled.div`
   height: 500px;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.9), rgba(155, 89, 182, 0.9)), 
               url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
   background-size: cover;
   background-position: center;
@@ -32,6 +32,7 @@ const HeroBanner = styled.div`
   color: white;
   padding: 0 2rem;
   width: 100%;
+  position: relative;
 
   @media (max-width: 768px) {
     height: 400px;
@@ -43,24 +44,30 @@ const HeroTitle = styled.h1`
   font-size: 3.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #fff, #f8f9fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   @media (max-width: 768px) {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     margin-bottom: 0.8rem;
   }
 
   @media (max-width: 480px) {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 `;
 
 const HeroSubtitle = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   max-width: 800px;
   margin-bottom: 2rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  line-height: 1.5;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+  font-weight: 300;
+  opacity: 0.95;
 
   @media (max-width: 768px) {
     font-size: 1.1rem;
@@ -75,125 +82,179 @@ const HeroSubtitle = styled.p`
 const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 3rem 2rem;
+  gap: 3rem;
+  padding: 4rem 2rem;
   width: 100%;
   box-sizing: border-box;
+  background: #f8f9fa;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
-    padding: 2rem 1rem;
-    gap: 1.5rem;
+    padding: 3rem 1rem;
+    gap: 2rem;
   }
 
   @media (max-width: 768px) {
-    padding: 1.5rem 0.5rem;
+    padding: 2rem 0.5rem;
+    gap: 1.5rem;
   }
 `;
 
 const ContactFormWrapper = styled.div`
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   width: 100%;
   box-sizing: border-box;
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  }
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 `;
 
 const FormTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: #2c3e50;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  font-weight: 600;
 
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 60px;
-    height: 3px;
+    width: 80px;
+    height: 4px;
     background: linear-gradient(90deg, #3498db, #9b59b6);
+    border-radius: 2px;
   }
 
   @media (max-width: 768px) {
-    font-size: 1.6rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
 const FormGroup = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
+  position: relative;
 
   @media (max-width: 768px) {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
 const Label = styled.label`
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
   color: #2c3e50;
+  font-size: 0.95rem;
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.8rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  background: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
 
   &:focus {
     border-color: #3498db;
+    background: white;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &::placeholder {
+    color: #adb5bd;
   }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
-  padding: 0.8rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
   font-size: 1rem;
-  min-height: 150px;
+  min-height: 160px;
   resize: vertical;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  background: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
 
   &:focus {
     border-color: #3498db;
+    background: white;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &::placeholder {
+    color: #adb5bd;
   }
 `;
 
 const SubmitButton = styled.button`
-  background: linear-gradient(90deg, #3498db, #9b59b6);
+  background: linear-gradient(135deg, #3498db, #9b59b6);
   color: white;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   font-size: 1.1rem;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  &:hover::before {
+    left: 100%;
   }
 
   @media (max-width: 768px) {
-    padding: 0.8rem;
+    padding: 1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -205,127 +266,175 @@ const ContactInfoWrapper = styled.div`
 
 const LocationTabs = styled.div`
   display: flex;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid #e9ecef;
   overflow-x: auto;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  background: white;
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
   &::-webkit-scrollbar {
     display: none;
   }
 
   @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 0.3rem;
   }
 `;
 
 const TabButton = styled.button`
-  padding: 0.8rem 1.5rem;
-  background: none;
+  padding: 1rem 2rem;
+  background: ${props => props.active ? 'linear-gradient(135deg, #3498db, #9b59b6)' : 'transparent'};
   border: none;
-  border-bottom: 3px solid transparent;
+  border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #7f8c8d;
-  font-weight: 500;
+  color: ${props => props.active ? 'white' : '#7f8c8d'};
+  font-weight: ${props => props.active ? '600' : '500'};
   white-space: nowrap;
   flex-shrink: 0;
-
-  &.active {
-    color: #2c3e50;
-    border-bottom-color: #3498db;
-  }
+  margin: 0 0.2rem;
+  box-shadow: ${props => props.active ? '0 4px 15px rgba(52, 152, 219, 0.3)' : 'none'};
 
   &:hover {
-    color: #2c3e50;
+    color: ${props => props.active ? 'white' : '#2c3e50'};
+    background: ${props => props.active ? 'linear-gradient(135deg, #3498db, #9b59b6)' : '#f8f9fa'};
+    transform: translateY(-2px);
   }
 
   @media (max-width: 768px) {
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1.2rem;
     font-size: 0.9rem;
   }
 `;
 
 const LocationContent = styled.div`
   flex: 1;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 const MapContainer = styled.div`
-  height: 300px;
+  height: 320px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e9ecef;
 
   @media (max-width: 768px) {
     height: 250px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 `;
 
 const ContactDetails = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 
   @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 `;
 
 const ContactItem = styled.div`
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+
+  &:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+  }
 
   @media (max-width: 768px) {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem;
   }
 `;
 
 const IconWrapper = styled.div`
-  width: 40px;
-  height: 40px;
-  background: #f8f9fa;
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #3498db, #9b59b6);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
-  color: #3498db;
-  font-size: 1.2rem;
+  margin-right: 1.2rem;
+  color: white;
+  font-size: 1.3rem;
   flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 
   @media (max-width: 768px) {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    margin-right: 1rem;
   }
 `;
 
 const ContactText = styled.div`
   flex: 1;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.5;
 
   strong {
     font-weight: 600;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  span {
+    color: #6c757d;
+    font-weight: 400;
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 `;
 
 const ContactHeading = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #2c3e50;
   margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #9b59b6);
+    border-radius: 2px;
+  }
 
   @media (max-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 1.2rem;
   }
 `;
@@ -337,26 +446,66 @@ const SocialLinks = styled.div`
 `;
 
 const SocialLink = styled.a`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #f8f9fa;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #3498db, #9b59b6);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2c3e50;
+  color: white;
   transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 
   &:hover {
-    background: #3498db;
-    color: white;
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
   }
 
   @media (max-width: 768px) {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
   }
+`;
+
+const SuccessMessage = styled.div`
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+  animation: slideIn 0.5s ease;
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const SuccessIcon = styled.div`
+  font-size: 3rem;
+  margin-bottom: 1rem;
+`;
+
+const SuccessTitle = styled.h3`
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+`;
+
+const SuccessText = styled.p`
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
 `;
 
 // Contact Us Component
@@ -369,35 +518,23 @@ const ContactUsPage = () => {
     subject: '',
     message: ''
   });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const locations = {
     delhi: {
       name: 'Delhi Headquarters',
-      address: '123 Democracy Street, Connaught Place, New Delhi - 110001',
-      phone: ['+91 11 2345 6789', '+91 98765 43210'],
-      email: 'delhi@shanehindforum.org',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.715454038555!2d77.20637231508318!3d28.62890098241798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5a8a6a0a3d%3A0x6a8c0a9a3a0a0a0a!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
+      address: 'Flat No. 503, Saral CGHS Limited, Plot- 15 Dwarka, Sector 10, New Delhi-110075',
+      phone: ['+91 8858800666', '+91 8185099777'],
+      email: 'shanehindforum@gmail.com',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.788758422673!2d77.05821731508214!3d28.57923878244657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b7f7c7b7b7b%3A0x7b7b7b7b7b7b7b7b!2sDwarka%20Sector%2010%2C%20New%20Delhi%2C%20Delhi%20110075!5e0!3m2!1sen!2sin!4v1620000000000'
     },
     deoria: {
       name: 'Deoria Center',
-      address: '456 Freedom Lane, Near Gandhi Chowk, Deoria - 274001',
-      phone: ['+91 55 1234 5678', '+91 98765 12345'],
-      email: 'deoria@shanehindforum.org',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.715454038555!2d83.20637231508318!3d26.62890098241798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991b7d1a0a0a0a%3A0x6a8c0a9a3a0a0a0a!2sDeoria%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
-    },
-    patna: {
-      name: 'Patna Center',
-      address: '789 Liberty Road, Near Gandhi Maidan, Patna - 800001',
-      phone: ['+91 61 2345 6789', '+91 98765 67890'],
-      email: 'patna@shanehindforum.org',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.715454038555!2d85.20637231508318!3d25.62890098241798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2a0a0a0a0a0a%3A0x6a8c0a9a3a0a0a0a!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
-    },
-    lakhnaw: {
-      name: 'Lucknow Center',
-      address: '321 Unity Avenue, Hazratganj, Lucknow - 226001',
-      phone: ['+91 52 2345 6789', '+91 98765 98765'],
-      email: 'lucknow@shanehindforum.org',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.715454038555!2d80.20637231508318!3d26.82890098241798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399a0a0a0a0a0a%3A0x6a8c0a9a3a0a0a0a!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
+      address: 'Buddha Hospital & Heart Care Center, Kailashpuri, Deoria, Uttar Pradesh 274001',
+      phone: ['+91 8858800666', '+91 8185099777'],
+      email: 'shanehindforum@gmail.com',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.123456789012!2d83.46150731508214!3d26.50467898244657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991b7d1a0a0a0a%3A0x6a8c0a9a3a0a0a0a!2sDeoria%2C%20Uttar%20Pradesh%20274001!5e0!3m2!1sen!2sin!4v1620000000000'
     }
   };
 
@@ -409,11 +546,18 @@ const ContactUsPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
     console.log('Form submitted:', formData);
-    alert('Thank you for contacting us! We will get back to you soon.');
+    setShowSuccess(true);
+    setIsSubmitting(false);
+    
+    // Reset form
     setFormData({
       name: '',
       email: '',
@@ -421,6 +565,11 @@ const ContactUsPage = () => {
       subject: '',
       message: ''
     });
+    
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 5000);
   };
 
   const currentLocation = locations[activeLocation];
@@ -429,15 +578,28 @@ const ContactUsPage = () => {
     <HomePage>
       <ContactContainer>
         <HeroBanner>
-          <HeroTitle>Connect With Us</HeroTitle>
+          <HeroTitle>Get In Touch With Us</HeroTitle>
           <HeroSubtitle>
-            Reach out to our team across India for inquiries, collaborations, or to learn more about our initiatives.
+            We're here to help and answer any questions you might have. 
+            Reach out to our team across India for inquiries, collaborations, 
+            or to learn more about our initiatives.
           </HeroSubtitle>
         </HeroBanner>
 
         <ContentWrapper>
           <ContactFormWrapper>
             <FormTitle>Send Us a Message</FormTitle>
+            
+            {showSuccess && (
+              <SuccessMessage>
+                <SuccessIcon>✓</SuccessIcon>
+                <SuccessTitle>Thank You!</SuccessTitle>
+                <SuccessText>
+                  Your message has been sent successfully. We'll get back to you within 24 hours.
+                </SuccessText>
+              </SuccessMessage>
+            )}
+            
             <form onSubmit={handleSubmit}>
               <FormGroup>
                 <Label htmlFor="name">Your Name *</Label>
@@ -447,6 +609,7 @@ const ContactUsPage = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  placeholder="Enter your full name"
                   required
                 />
               </FormGroup>
@@ -459,6 +622,7 @@ const ContactUsPage = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  placeholder="Enter your email address"
                   required
                 />
               </FormGroup>
@@ -471,6 +635,7 @@ const ContactUsPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  placeholder="Enter your phone number"
                 />
               </FormGroup>
 
@@ -482,6 +647,7 @@ const ContactUsPage = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
+                  placeholder="What is this regarding?"
                 />
               </FormGroup>
 
@@ -492,40 +658,28 @@ const ContactUsPage = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  placeholder="Tell us how we can help you..."
                   required
                 />
               </FormGroup>
 
-              <SubmitButton type="submit">Send Message</SubmitButton>
+              <SubmitButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </SubmitButton>
             </form>
           </ContactFormWrapper>
 
           <ContactInfoWrapper>
             <LocationTabs>
-              <TabButton
-                className={activeLocation === 'delhi' ? 'active' : ''}
-                onClick={() => setActiveLocation('delhi')}
-              >
-                Delhi
-              </TabButton>
-              <TabButton
-                className={activeLocation === 'deoria' ? 'active' : ''}
-                onClick={() => setActiveLocation('deoria')}
-              >
-                Deoria
-              </TabButton>
-              <TabButton
-                className={activeLocation === 'patna' ? 'active' : ''}
-                onClick={() => setActiveLocation('patna')}
-              >
-                Patna
-              </TabButton>
-              <TabButton
-                className={activeLocation === 'lakhnaw' ? 'active' : ''}
-                onClick={() => setActiveLocation('lakhnaw')}
-              >
-                Lucknow
-              </TabButton>
+              {Object.keys(locations).map(locationKey => (
+                <TabButton
+                  key={locationKey}
+                  active={activeLocation === locationKey}
+                  onClick={() => setActiveLocation(locationKey)}
+                >
+                  {locations[locationKey].name.split(' ')[0]}
+                </TabButton>
+              ))}
             </LocationTabs>
 
             <LocationContent>
@@ -540,6 +694,7 @@ const ContactUsPage = () => {
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </MapContainer>
 
@@ -549,7 +704,8 @@ const ContactUsPage = () => {
                     <i className="fas fa-map-marker-alt"></i>
                   </IconWrapper>
                   <ContactText>
-                    <strong>Address:</strong> {currentLocation.address}
+                    <strong>Address</strong>
+                    <span>{currentLocation.address}</span>
                   </ContactText>
                 </ContactItem>
 
@@ -558,7 +714,8 @@ const ContactUsPage = () => {
                     <i className="fas fa-phone"></i>
                   </IconWrapper>
                   <ContactText>
-                    <strong>Phone:</strong> {currentLocation.phone.join(' / ')}
+                    <strong>Phone</strong>
+                    <span>{currentLocation.phone.join(' / ')}</span>
                   </ContactText>
                 </ContactItem>
 
@@ -567,7 +724,8 @@ const ContactUsPage = () => {
                     <i className="fas fa-envelope"></i>
                   </IconWrapper>
                   <ContactText>
-                    <strong>Email:</strong> {currentLocation.email}
+                    <strong>Email</strong>
+                    <span>{currentLocation.email}</span>
                   </ContactText>
                 </ContactItem>
 
@@ -576,12 +734,13 @@ const ContactUsPage = () => {
                     <i className="fab fa-whatsapp"></i>
                   </IconWrapper>
                   <ContactText>
-                    <strong>WhatsApp:</strong> {currentLocation.phone[1]}
+                    <strong>WhatsApp</strong>
+                    <span>{currentLocation.phone[1]}</span>
                   </ContactText>
                 </ContactItem>
               </ContactDetails>
 
-              <ContactHeading>Connect With Us</ContactHeading>
+              <ContactHeading>Follow Us</ContactHeading>
               <SocialLinks>
                 <SocialLink href={`https://wa.me/${currentLocation.phone[1].replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-whatsapp"></i>
